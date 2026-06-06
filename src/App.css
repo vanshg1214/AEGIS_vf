@@ -1,0 +1,340 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 100vh;
+  padding: 1.5rem;
+  overflow: hidden;
+  
+  /* Prevent blue highight on tap (mobile) and text selection (desktop) */
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Reusable Glass Card - Ultra Premium */
+.glass-card {
+  background: var(--surface);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--surface-border);
+  border-top-color: rgba(255, 255, 255, 0.15); /* Top lighting effect */
+  border-radius: var(--radius-xl);
+  box-shadow: 
+    0 40px 80px -20px rgba(0, 0, 0, 0.8), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 3rem 2.5rem;
+  width: 100%;
+  max-width: 520px;
+  position: relative;
+  z-index: 10;
+  transform: translateY(20px);
+  opacity: 0;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Typographic Upgrades */
+.brand-heading {
+  font-size: clamp(1.8rem, 8vw, 2.8rem); /* Dynamically scales font based on screen width */
+  font-weight: 900;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
+  filter: drop-shadow(0 0 15px rgba(255, 123, 0, 0.3));
+  white-space: nowrap; /* Ensures text stays in single line */
+  letter-spacing: -0.04em;
+}
+
+.form-subtitle {
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  opacity: 0.9;
+}
+
+p.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Form Styles */
+.form-icon-header {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(255, 123, 0, 0.2), rgba(255, 208, 0, 0.05));
+  border: 1px solid rgba(255, 123, 0, 0.2);
+  border-radius: 20px; /* Squircle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: 
+    0 0 40px rgba(255, 123, 0, 0.2),
+    inset 0 2px 10px rgba(255, 255, 255, 0.1);
+  transform: rotate(-5deg);
+}
+
+.delivery-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem 1rem;
+  width: 100%;
+  margin-top: 2.5rem;
+}
+
+.grid-full { grid-column: 1 / -1; }
+.grid-half { grid-column: span 1; }
+
+.form-group {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5rem;
+  margin-left: 0.25rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-main);
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  transition: all 0.25s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 400;
+}
+
+.form-control:focus {
+  outline: none;
+  background: rgba(0, 0, 0, 0.6);
+  border-color: var(--primary);
+  box-shadow: 
+    inset 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 0 0 4px rgba(255, 123, 0, 0.15);
+}
+
+/* Date Picker Reset & Tweaks */
+input[type="date"] {
+  position: relative;
+  /* Enforce a cleaner cross-browser look */
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) sepia(100%) saturate(1000%) hue-rotate(330deg) brightness(1.2); /* Make the icon slightly golden/orange */
+  opacity: 0.8;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  padding: 4px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Ultra Premium Button */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, #ff5e00 100%);
+  color: white;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3); /* Top light glare */
+  border-radius: var(--radius-md);
+  padding: 1.1rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 
+    0 10px 20px -5px rgba(255, 94, 0, 0.4),
+    inset 0 -2px 10px rgba(0, 0, 0, 0.2); /* Gives volumetric feel */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.form-submit-btn {
+  grid-column: 1 / -1;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #ff8c00 0%, #ff5e00 100%);
+  box-shadow: 
+    0 15px 30px -5px rgba(255, 94, 0, 0.5),
+    inset 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 10px -5px rgba(255, 94, 0, 0.4);
+}
+
+/* Loader */
+.loader {
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top: 3px solid white;
+  width: 22px;
+  height: 22px;
+  animation: spin 1s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success Screen */
+.success-screen {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.success-icon {
+  color: var(--secondary); /* Golden checkmark! */
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 20px rgba(255, 208, 0, 0.4));
+  animation: scaleIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0); opacity: 0; }
+  60% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Video Player */
+.video-container {
+  width: 100%;
+  max-width: 900px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 
+    0 35px 60px -15px rgba(0, 0, 0, 0.8), 
+    0 0 50px rgba(255, 123, 0, 0.1);
+  border: 1px solid var(--surface-border);
+  background: #000;
+  opacity: 0;
+  animation: fadeEnter 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  position: relative;
+  cursor: pointer;
+}
+
+.unmute-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.unmute-overlay.hidden {
+  opacity: 0;
+}
+
+.unmute-pulse {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 140, 0, 0.6);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 30px rgba(255, 140, 0, 0.8);
+  animation: radarPulse 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.unmute-overlay span {
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: 0.5px;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.4);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes fadeEnter {
+  0% { opacity: 0; transform: translateY(40px) scale(0.95); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .glass-card {
+    padding: 2.5rem 1.75rem;
+    border-radius: 20px;
+  }
+  
+  h1 { font-size: 1.8rem; }
+  
+  .app-container { padding: 1rem; }
+
+  .grid-half { grid-column: 1 / -1; }
+  
+  .delivery-form { gap: 1.25rem; margin-top: 1.5rem; }
+}
