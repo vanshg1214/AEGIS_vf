@@ -13,7 +13,7 @@ function App() {
   const [currentState, setCurrentState] = useState(() => {
     return window.location.pathname === '/form' ? STATES.FORM : STATES.VIDEO;
   });
-  const [formData, setFormData] = useState({ name: '', address: '', whatsapp: '', dob: '' });
+  const [formData, setFormData] = useState({ name: '', address: '', whatsapp: '', dob: '1963-05-04' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const videoRef = useRef(null);
 
